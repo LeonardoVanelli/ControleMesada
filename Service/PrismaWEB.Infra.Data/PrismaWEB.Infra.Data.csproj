@@ -75,10 +75,6 @@
     <Compile Include="EntityConfig\ValorTarefaConfiguration.cs" />
     <Compile Include="EntityConfig\VotoCandidatoLeisConfiguration.cs" />
     <Compile Include="EntityConfig\VotoConfiguration.cs" />
-    <Compile Include="Migrations\201905311631572_Banco.cs" />
-    <Compile Include="Migrations\201905311631572_Banco.Designer.cs">
-      <DependentUpon>201905311631572_Banco.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AtividadeRepository.cs" />
@@ -120,11 +116,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905311631572_Banco.resx">
-      <DependentUpon>201905311631572_Banco.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
