@@ -1,0 +1,47 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.ValorTarefaViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-row col-12">
+        <div class="form-group col-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="ui violet button" />
+                <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="ui blue button" />
+                <a href="@Url.Action("Index")" class="ui grey button">Cancelar</a>
+            </div>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <h4 class="ui dividing header" style="width: 100%">Dados</h4>
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label" })
+            <label style="color:red;" title="Campo obrigatório">*</label>
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Tarefa_Id, "Tarefa", htmlAttributes: new { @class = "control-label" })
+            <label style="color:red;" title="Campo obrigatório">*</label>
+            <div class="ui-widget">
+                @Html.DropDownList("Tarefa_Id", null, new { @class = "ui fluid search selection dropdown" })
+                @Html.ValidationMessageFor(model => model.Tarefa_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="ui violet button" />
+            </div>
+        </div>
+    </div>
+}

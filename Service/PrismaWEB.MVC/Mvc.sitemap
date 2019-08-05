@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Home" controller="Home" action="Index">    
+    <mvcSiteMapNode title="Cargos" controller="Cargos" action="Index">
+      <mvcSiteMapNode title="Novo" controller="Cargos" action="Create"/>
+      <mvcSiteMapNode title="Edit" controller="Cargos" action="Edit"/>      
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="Leis" controller="Leis" action="Index">
+      <mvcSiteMapNode title="Novo" controller="Leis" action="Create"/>
+      <mvcSiteMapNode title="Edit" controller="Leis" action="Edit"/>
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="Configurações" controller="Configuracoes" action="Index">
+      <mvcSiteMapNode title="Alterar Senha" controller="SCadastros" action="AlterarSenha"/>
+      
+      <mvcSiteMapNode title="Papéis" controller="SPapeis" action="Index">
+        <mvcSiteMapNode title="Novo" controller="SPapeis" action="Create"/>
+        <mvcSiteMapNode title="Edit" controller="SPapeis" action="Edit" preservedRouteParameters="id"/>        
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Menus" controller="SMenus" action="Index">
+        <mvcSiteMapNode title="Novo" controller="SMenus" action="Create"/>
+        <mvcSiteMapNode title="Edit" controller="SMenus" action="Edit" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Itens do Menu" controller="SitensMenus" action="Index">
+        <mvcSiteMapNode title="Novo" controller="SitensMenus" action="Create"/>
+        <mvcSiteMapNode title="Edit" controller="SitensMenus" action="Edit" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+
+      <mvcSiteMapNode title="Usiarios" controller="Usuarios" action="Index">
+        <mvcSiteMapNode title="Edit" controller="Usuarios" action="Edit" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+      
+      <mvcSiteMapNode title="Papéis Ações" controller="SPapeisAcoes" action="Index">
+        <mvcSiteMapNode title="Novo" controller="SPapeisAcoes" action="Create"/>
+        <mvcSiteMapNode title="Edit" controller="SPapeisAcoes" action="Edit"/>
+      </mvcSiteMapNode>
+      
+      <mvcSiteMapNode title="TipoPessoas" controller="TipoPessoas" action="Index">
+        <mvcSiteMapNode title="Novo" controller="TipoPessoas" action="Create"/>
+        <mvcSiteMapNode title="Edit" controller="TipoPessoas" action="Edit" preservedRouteParameters="id"/>
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="Pessoas" controller="Pessoas" action="Index">
+      <mvcSiteMapNode title="Novo" controller="Pessoas" action="Create"/>
+      <mvcSiteMapNode title="Edit" controller="Pessoas" action="Edit" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="Tarefas" controller="Tarefas" action="Index">
+      <mvcSiteMapNode title="Novo" controller="Tarefas" action="Create"/>
+      <mvcSiteMapNode title="Edit" controller="Tarefas" action="Edit" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Valor das tarefas" controller="ValorTarefas" action="Index">
+      <mvcSiteMapNode title="Novo" controller="ValorTarefas" action="Create"/>
+      <mvcSiteMapNode title="Edit" controller="ValorTarefas" action="Edit" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Atividades" controller="Atividades" action="Index">
+      <mvcSiteMapNode title="Novo" controller="Atividades" action="Create"/>
+      <mvcSiteMapNode title="Edit" controller="Atividades" action="Edit" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Fechamento" controller="Fechamentos" action="Index">
+      <mvcSiteMapNode title="Relatório" controller="Fechamentos" action="Fechamento"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Acesso Negado" controller="Error" action="SemPermicao"/>
+    
+  </mvcSiteMapNode>
+</mvcSiteMap>

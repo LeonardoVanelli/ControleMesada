@@ -1,0 +1,108 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.Sistema.SUsuarioViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-row col-6" style="float:left; border-right:1px solid #343a40">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group col-md-12">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Apelido, htmlAttributes: new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Apelido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Apelido, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.TextBoxFor(model => model.Senha, new { @Value = "*******", @class = "form-control", type = "password" })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.ValidaSenha, htmlAttributes: new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.TextBoxFor(model => model.ValidaSenha, new { @Value = "*******", @class = "form-control", type = "password" })
+                @Html.ValidationMessageFor(model => model.ValidaSenha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="ui violet button" />
+            </div>
+        </div>
+    </div>
+}
+
+@{
+    Html.RenderAction("IndexUsuario", "SPessoasPapeis", new { idUsuario = Model.Id });
+}
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-row col-6" style="float:right">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group col-md-6">
+                @Html.Label("Papel", htmlAttributes: new { @class = "control-label" })
+                <div class="ui-widget">
+                    @Html.Editor("Papel", new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessage("Papel", "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                @Html.Label("Papel", htmlAttributes: new { @class = "control-label" })
+                <div class="ui-widget">
+                    <div class="checkbox">
+                        @Html.Editor("Papel", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessage("Papel", "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@

@@ -1,0 +1,132 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.SPapeisAcoesViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-row col-12">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group col-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="ui violet button" />
+                <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="ui blue button" />
+                <a href="@Url.Action("Index","Configuracoes",null)" class="ui grey button">Cancelar</a>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.Label("Página", new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.DropDownList("Pagina_Id", null, new { @class = "ui fluid search selection dropdown", onchange = "CarregaAcoes()" })
+                @Html.ValidationMessageFor(model => model.Acao_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Acao_Id, htmlAttributes: new { @class = "control-label" })
+                <div class="ui-widget">
+                    <select id="Acao_Id" name="Acao_Id" class="ui fluid search selection dropdown">
+                        <option></option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Acao_Id, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group col-md-5">
+            @Html.LabelFor(model => model.Papel_Id, htmlAttributes: new { @class = "control-label" })
+            <div class="ui-widget">
+                @Html.DropDownList("Papel_Id", null, new { @class = "ui fluid search selection dropdown", onchange = "CarregaAcoes()" })
+                @Html.ValidationMessageFor(model => model.Papel_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <h4 class="ui dividing header" style="width: 100%">Ações</h4>
+        <div id="Acoes" class="form-group col-md-6"></div>
+
+        @*<div class="form-group col-md-2">
+                @Html.LabelFor(model => model.Conceder, htmlAttributes: new { @class = "control-label" })
+                <div class="ui-widget">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Conceder)
+                        @Html.ValidationMessageFor(model => model.Conceder, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+
+        @*<div class="form-group col-12">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>*@
+    </div>
+}
+<script src="~/Content/Js/jquery-3.3.1.min.js"></script>
+<script>
+    function CarregaAcoes() {
+        var papelId = $("#Papel_Id").val();
+        var paginaId = $("#Pagina_Id").val();
+
+        $.ajax({
+            url: '@Url.Action("BuscaAcaoPorPagina", "SPapeisAcoes")',
+            data: { IdPagina: paginaId, idPapel: papelId},
+            success: function (result) {
+                //$('#Acao_Id').children('option').remove();
+                $('#Acoes > div').remove()
+                $.each(result, function (i, acao) {
+                  //  $('#Acao_Id').append('<option value="' + acao.Id + '">' + acao.Nome + '</option>');
+
+                    var Div = $("<div>", {
+                        class: "custom-control custom-radio"
+                    })
+
+                    //'Ativa' esta sendo usando como 'Condecer'
+                    if (acao.Ativa == true)
+                    var checked = 'checked: "checked"';
+
+                    $("<input>", {
+                        type: "checkbox",
+                        id: acao.Nome,
+                        name: acao.Nome,
+                        class: "custom-control-input acao",
+                        value: acao.Id,
+                        checked,
+                        onchange: "AlteraPermicao(this)"
+                    }).appendTo(Div)
+
+                    $("<label>", {
+                        class: "custom-control-label",
+                        for: acao.Nome,
+                        text: acao.Nome
+                    }).appendTo(Div)
+
+                    $('#Acoes').append(Div);
+                })
+            }
+        });
+    }
+
+    function AlteraPermicao(acao) {
+        var acaoId = acao.value;
+        var paginaId = $("#Pagina_Id").val();
+        var papelId = $("#Papel_Id").val();
+
+        $.ajax({
+            url: '@Url.Action("AlteraPermicao", "SPapeisAcoes")',
+            data: { paginaId: paginaId, acaoId: acaoId, papelId: papelId },
+            success: function (result) {
+                console.log(result);
+            }
+        });
+    }
+
+    $(window).on("load", function () {
+        CarregaAcoes();
+    })
+</script>

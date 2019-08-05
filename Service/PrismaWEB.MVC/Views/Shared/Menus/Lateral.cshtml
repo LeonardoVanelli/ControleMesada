@@ -1,0 +1,40 @@
+﻿<ul class="navbar-nav navbar-sidenav" id="nav-lateral">
+    @* cadastro rapido *@
+    <li id="nav-item-cadastro-rapido" class="nav-item" data-toggle="tooltip" data-placement="right" title="Cadastro Rápido">
+        <a class="nav-link nav-link-collapse collapsed">
+            <i class="fa fa-fw fas fa-plus"></i>
+            <span class="nav-link-text">Cadastro Rápido</span>
+        </a>
+    </li>
+
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pessoas">
+        <a class="nav-link" href="@Url.Action("Index", "Pessoas")">
+            <i class="fa fa-fw fas fa-users"></i>
+            <span class="nav-link-text">Pessoas</span>
+        </a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pessoas">
+        <a class="nav-link" href="@Url.Action("Index", "Fechamentos")">
+            <i class="fas fa-sticky-note"></i>
+            <span class="nav-link-text">Fechamento</span>
+        </a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <a class="nav-link" href="~/Tarefas">
+            <i class="far fa-edit"></i>
+            <span class="nav-link-text">Tarefas</span>
+        </a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <a class="nav-link" href="~/ValorTarefas">
+            <i class="fas fa-money-check-alt"></i>
+            <span class="nav-link-text">Valor das Tarefas</span>
+        </a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <a class="nav-link" href="~/Atividades">
+            <i class="fas fa-tasks"></i>
+            <span class="nav-link-text">Atividades</span>
+        </a>
+    </li>
+</ul>

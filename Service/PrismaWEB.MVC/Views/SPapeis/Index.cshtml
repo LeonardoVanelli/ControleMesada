@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.SPapelViewModel>
+@using ProjetoModeloDDD.MVC.Html_Helpers 
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="card-header">
+    <a href="@Url.Action("Create")" class="ui violet button"><i class="fa fa-plus"></i> Novo</a>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Ações</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:50px">
+                            @Html.Editar(item.Id, Url.Action("Edit", new { id = item.Id }))
+                            @Html.Deletar(item.Id, item.Nome)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details/"+item.Id)" class="removeLinkAzul">
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details/"+item.Id)" class="removeLinkAzul">
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.LeiViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Html.RenderAction("BotaoCreate", "Botoes", new { NomeController = "Leis" });
+}
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Ações</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Numero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Autor_Id)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:60px">
+                            <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" title="Editar">
+                                <span style="margin-right:0px;" class="blue">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                            <a id="@item.Id" onclick="abrirModalDeletar(this)" href="#" data-toggle="tooltip" title="Deletar">
+                                <span style="margin-right:0px;" class="red">
+                                    <i class="fa fa-minus" aria-hidden="true" style="color:white"></i>
+                                </span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details/"+item.Id)" class="removeLinkAzul">
+                                @Html.DisplayFor(modelItem => item.Numero)
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details/"+item.Id)" class="removeLinkAzul">
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details/"+item.Id)" class="removeLinkAzul">
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details/"+item.Id)" class="removeLinkAzul">
+                                @Html.DisplayFor(modelItem => item.Autor.Nome)
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

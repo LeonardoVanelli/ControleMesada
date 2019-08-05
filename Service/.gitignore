@@ -1,0 +1,29 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+# /Service
+
+/.vs
+/PrismaWEB.Application/bin/Debug
+/PrismaWEB.Application/obj/Debug
+/PrismaWEB.Domain/bin/Debug
+/PrismaWEB.Domain/obj/Debug
+/PrismaWEB.Infra.Data/bin/Debug
+/PrismaWEB.Infra.Data/obj/Debug
+/PrismaWEB.MVC/bin
+/PrismaWEB.MVC/obj/Debug
+/PrismaWEB.Infra.Data/PrismaWEB.Infra.Data.csproj.user
+/PrismaWEB.Domain/PrismaWEB.Domain.csproj.user
+/PrismaWEB.Application/PrismaWEB.Application.csproj.user
+/PrismaWEB.MVC/PrismaWEB.MVC.csproj.user
+/PrismaWEB.Infra.Data/obj/Release
+/PrismaWEB.Infra.Data/bin/Release
+/PrismaWEB.MVC/obj/Release
+/PrismaWEB.Domain/bin/Release
+/PrismaWEB.Domain/obj/Release
+/PrismaWEB.Application/obj/Release
+/PrismaWEB.Application/bin/Release
+/PrismaWEB.Utils/obj/Debug
+/PrismaWEB.Utils/bin/Debug
+/PrismaWEB.Utils/obj/Release

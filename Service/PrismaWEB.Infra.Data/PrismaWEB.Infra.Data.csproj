@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89389CAE-3B3A-4365-A012-D33AF64A829C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetoModeloDDD.Infra.Data</RootNamespace>
+    <AssemblyName>ProjetoModeloDDD.Infra.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contexto\ProjetoModeloContext.cs" />
+    <Compile Include="EntityConfig\AtividadeConfiguration.cs" />
+    <Compile Include="EntityConfig\BairroConfiguration.cs" />
+    <Compile Include="EntityConfig\CargoConfiguration.cs" />
+    <Compile Include="EntityConfig\CidadeConfiguration.cs" />
+    <Compile Include="EntityConfig\ClienteConfiguration.cs" />
+    <Compile Include="EntityConfig\EstadoConfiguration.cs" />
+    <Compile Include="EntityConfig\LeiConfiguration.cs" />
+    <Compile Include="EntityConfig\Localizacao\PaisConfiguration.cs" />
+    <Compile Include="EntityConfig\LogradouroConfiguration.cs" />
+    <Compile Include="EntityConfig\PessoaConfiguration.cs" />
+    <Compile Include="EntityConfig\PresidenteConfiguration.cs" />
+    <Compile Include="EntityConfig\ProdutoConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SAcaoConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SCadastroConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SItensMenuConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SMenusConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SPaginaConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SPapeisAcoesConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SPapelConfiguration.cs" />
+    <Compile Include="EntityConfig\Sistema\SPessoasPapeisConfiguration.cs" />
+    <Compile Include="EntityConfig\TarefaConfiguration.cs" />
+    <Compile Include="EntityConfig\TipoPessoaConfiguration.cs" />
+    <Compile Include="EntityConfig\ValorTarefaConfiguration.cs" />
+    <Compile Include="EntityConfig\VotoCandidatoLeisConfiguration.cs" />
+    <Compile Include="EntityConfig\VotoConfiguration.cs" />
+    <Compile Include="Migrations\201905311631572_Banco.cs" />
+    <Compile Include="Migrations\201905311631572_Banco.Designer.cs">
+      <DependentUpon>201905311631572_Banco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AtividadeRepository.cs" />
+    <Compile Include="Repositories\CargoRepository.cs" />
+    <Compile Include="Repositories\Localizacao\BairroRepository.cs" />
+    <Compile Include="Repositories\Localizacao\CidadeRepository.cs" />
+    <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\EstadoRepository.cs" />
+    <Compile Include="Repositories\LeiRepository.cs" />
+    <Compile Include="Repositories\Localizacao\PaisRepository.cs" />
+    <Compile Include="Repositories\Localizacao\LogradouroRepository.cs" />
+    <Compile Include="Repositories\PessoaRepository.cs" />
+    <Compile Include="Repositories\PresidenteRepository.cs" />
+    <Compile Include="Repositories\ProdutoRepository.cs" />
+    <Compile Include="Repositories\RespositoryBase.cs" />
+    <Compile Include="Repositories\Sistema\QueryRepository.cs" />
+    <Compile Include="Repositories\Sistema\SAcaoRepository.cs" />
+    <Compile Include="Repositories\Sistema\SCadastroRepository.cs" />
+    <Compile Include="Repositories\Sistema\SItensMenuRepository.cs" />
+    <Compile Include="Repositories\Sistema\SMenusRepository.cs" />
+    <Compile Include="Repositories\Sistema\SPaginaRepository.cs" />
+    <Compile Include="Repositories\Sistema\SPapeisAcoesRepository.cs" />
+    <Compile Include="Repositories\Sistema\SPapelRepository.cs" />
+    <Compile Include="Repositories\Sistema\SPessoasPapeisRepository.cs" />
+    <Compile Include="Repositories\TarefaRepository.cs" />
+    <Compile Include="Repositories\TipoPessoaRepository.cs" />
+    <Compile Include="Repositories\ValorTarefaRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrismaWEB.Domain\PrismaWEB.Domain.csproj">
+      <Project>{984cb356-b992-441e-bf81-a36d1b30add0}</Project>
+      <Name>PrismaWEB.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrismaWEB.Utils\PrismaWEB.Utils.csproj">
+      <Project>{FB0A912A-433C-4603-8151-F576A631D421}</Project>
+      <Name>PrismaWEB.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905311631572_Banco.resx">
+      <DependentUpon>201905311631572_Banco.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

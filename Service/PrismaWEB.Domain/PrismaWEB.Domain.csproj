@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{984CB356-B992-441E-BF81-A36D1B30ADD0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetoModeloDDD.Domain</RootNamespace>
+    <AssemblyName>ProjetoModeloDDD.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Atividade.cs" />
+    <Compile Include="Entities\Localizacao\Bairro.cs" />
+    <Compile Include="Entities\Sistema\SAcao.cs" />
+    <Compile Include="Entities\Sistema\SCadastro.cs" />
+    <Compile Include="Entities\Candidatocargos.cs" />
+    <Compile Include="Entities\Cargo.cs" />
+    <Compile Include="Entities\Localizacao\Cidade.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Localizacao\Estado.cs" />
+    <Compile Include="Entities\Favorito.cs" />
+    <Compile Include="Entities\Lei.cs" />
+    <Compile Include="Entities\Localizacao\Logradouro.cs" />
+    <Compile Include="Entities\Localizacao\Pais.cs" />
+    <Compile Include="Entities\Pessoa.cs" />
+    <Compile Include="Entities\Presidente.cs" />
+    <Compile Include="Entities\Produto.cs" />
+    <Compile Include="Entities\Sistema\SItensMenu.cs" />
+    <Compile Include="Entities\Sistema\SMenus.cs" />
+    <Compile Include="Entities\Sistema\SPagina.cs" />
+    <Compile Include="Entities\Sistema\SPapeisAcoes.cs" />
+    <Compile Include="Entities\Sistema\SPapel.cs" />
+    <Compile Include="Entities\Sistema\SParametro.cs" />
+    <Compile Include="Entities\Sistema\SPessoasPapeis.cs" />
+    <Compile Include="Entities\Tarefa.cs" />
+    <Compile Include="Entities\TipoPessoa.cs" />
+    <Compile Include="Entities\ValorTarefa.cs" />
+    <Compile Include="Entities\Votocandidatoleis.cs" />
+    <Compile Include="Entities\Voto.cs" />
+    <Compile Include="Enum\Enumeration.cs" />
+    <Compile Include="Interfaces\Repositories\IAtividadeRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IQueryRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITarefaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IValorTarefaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Localizacao\IBairroRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Localizacao\ICidadeRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Localizacao\IEstadoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILeiRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Localizacao\ILogradouroRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Localizacao\IPaisRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPessoaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPresidenteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProdutoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISAcaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISCadastroRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISItensMenuRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISMenusRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISPaginaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISPapeisAcoesRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISPapelRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Sistema\ISPessoasPapeisRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoPessoaRepository.cs" />
+    <Compile Include="Interfaces\Services\IAtividadeService.cs" />
+    <Compile Include="Interfaces\Services\ITarefaService.cs" />
+    <Compile Include="Interfaces\Services\IValorTarefaService.cs" />
+    <Compile Include="Interfaces\Services\Localizacao\IBairroService.cs" />
+    <Compile Include="Interfaces\Services\ICargoService.cs" />
+    <Compile Include="Interfaces\Services\Localizacao\ICidadeService.cs" />
+    <Compile Include="Interfaces\Services\IClienteService.cs" />
+    <Compile Include="Interfaces\Services\Localizacao\IEstadoService.cs" />
+    <Compile Include="Interfaces\Services\ILeiService.cs" />
+    <Compile Include="Interfaces\Services\Localizacao\ILogradouroService.cs" />
+    <Compile Include="Interfaces\Services\Localizacao\IPaisService.cs" />
+    <Compile Include="Interfaces\Services\IPessoaService.cs" />
+    <Compile Include="Interfaces\Services\IPresidenteService.cs" />
+    <Compile Include="Interfaces\Services\IProdutoService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\IQueryService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISAcaoService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISCadastroService.cs" />
+    <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISItensMenuService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISMenusService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISPaginaService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISPapeisAcoesService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISPapelService.cs" />
+    <Compile Include="Interfaces\Services\Sistema\ISPessoasPapeisService.cs" />
+    <Compile Include="Interfaces\Services\ITipoPessoaService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AtividadeService.cs" />
+    <Compile Include="Services\Localizacao\BairroService.cs" />
+    <Compile Include="Services\CargoService.cs" />
+    <Compile Include="Services\Localizacao\CidadeService.cs" />
+    <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\Localizacao\EstadoService.cs" />
+    <Compile Include="Services\LeiService.cs" />
+    <Compile Include="Services\Localizacao\PaisService.cs" />
+    <Compile Include="Services\Localizacao\LogradouroService.cs" />
+    <Compile Include="Services\PessoaService.cs" />
+    <Compile Include="Services\PresidenteService.cs" />
+    <Compile Include="Services\ProdutoService.cs" />
+    <Compile Include="Services\Sistema\QueryService.cs" />
+    <Compile Include="Services\Sistema\SAcaoService.cs" />
+    <Compile Include="Services\Sistema\SCadastroService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\Sistema\SItensMenuService.cs" />
+    <Compile Include="Services\Sistema\SMenusService.cs" />
+    <Compile Include="Services\Sistema\SPaginaService.cs" />
+    <Compile Include="Services\Sistema\SPapeisAcoesService.cs" />
+    <Compile Include="Services\Sistema\SPapelService.cs" />
+    <Compile Include="Services\Sistema\SPessoasPapeisService.cs" />
+    <Compile Include="Services\TarefaService.cs" />
+    <Compile Include="Services\TipoPessoaService.cs" />
+    <Compile Include="Services\ValorTarefaService.cs" />
+    <Compile Include="Utils\Hashing.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrismaWEB.Utils\PrismaWEB.Utils.csproj">
+      <Project>{fb0a912a-433c-4603-8151-f576a631d421}</Project>
+      <Name>PrismaWEB.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

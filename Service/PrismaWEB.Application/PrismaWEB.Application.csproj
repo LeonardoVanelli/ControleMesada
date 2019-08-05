@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04BB3549-5197-4106-992A-BBF275A138C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetoModeloDDD.Application</RootNamespace>
+    <AssemblyName>ProjetoModeloDDD.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppServiceBase.cs" />
+    <Compile Include="AtividadeAppService.cs" />
+    <Compile Include="Interface\IAtividadeAppService.cs" />
+    <Compile Include="Interface\ITarefaAppService.cs" />
+    <Compile Include="Interface\IValorTarefaAppService.cs" />
+    <Compile Include="Interface\Localizacao\IBairroAppService.cs" />
+    <Compile Include="Interface\Localizacao\ICidadeAppService.cs" />
+    <Compile Include="Interface\Localizacao\IEstadoAppService.cs" />
+    <Compile Include="Interface\Localizacao\ILogradouroAppService.cs" />
+    <Compile Include="Interface\Sistema\IQueryAppService.cs" />
+    <Compile Include="Localizacao\BairroAppService.cs" />
+    <Compile Include="CargoAppService.cs" />
+    <Compile Include="Localizacao\CidadeAppService.cs" />
+    <Compile Include="ClienteAppService.cs" />
+    <Compile Include="Localizacao\EstadoAppService.cs" />
+    <Compile Include="Interface\IAppServiceBase.cs" />
+    <Compile Include="Interface\ICargoAppService.cs" />
+    <Compile Include="Interface\IClienteAppService.cs" />
+    <Compile Include="Interface\ILeiAppService.cs" />
+    <Compile Include="Interface\Localizacao\IPaisAppService.cs" />
+    <Compile Include="Interface\IPessoaAppService.cs" />
+    <Compile Include="Interface\IPresidenteAppService.cs" />
+    <Compile Include="Interface\IProdutoAppService.cs" />
+    <Compile Include="Interface\Sistema\ISAcaoAppService.cs" />
+    <Compile Include="Interface\Sistema\ISCadastroAppService.cs" />
+    <Compile Include="Interface\Sistema\ISItensMenuAppService.cs" />
+    <Compile Include="Interface\Sistema\ISMenusAppService.cs" />
+    <Compile Include="Interface\Sistema\ISPaginaAppService.cs" />
+    <Compile Include="Interface\Sistema\ISPapeisAcoesAppService.cs" />
+    <Compile Include="Interface\Sistema\ISPapelAppService.cs" />
+    <Compile Include="Interface\Sistema\ISPessoasPapeisAppService.cs" />
+    <Compile Include="Interface\ITipoPessoaAppService.cs" />
+    <Compile Include="LeiAppService.cs" />
+    <Compile Include="Localizacao\PaisAppService.cs" />
+    <Compile Include="Localizacao\LogradouroAppService.cs" />
+    <Compile Include="PessoaAppService.cs" />
+    <Compile Include="PresidenteAppService.cs" />
+    <Compile Include="ProdutoAppService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sistema\QueryAppService.cs" />
+    <Compile Include="Sistema\SAcaoAppService.cs" />
+    <Compile Include="Sistema\SCadastroAppService.cs" />
+    <Compile Include="Sistema\SItensMenuAppService.cs" />
+    <Compile Include="Sistema\SMenusAppService.cs" />
+    <Compile Include="Sistema\SPaginaAppService.cs" />
+    <Compile Include="Sistema\SPapeisAcoesAppService.cs" />
+    <Compile Include="Sistema\SPapelAppService.cs" />
+    <Compile Include="Sistema\SPessoasPapeisAppService.cs" />
+    <Compile Include="TarefaAppService.cs" />
+    <Compile Include="TipoPessoaAppService.cs" />
+    <Compile Include="ValorTarefaAppService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrismaWEB.Domain\PrismaWEB.Domain.csproj">
+      <Project>{984CB356-B992-441E-BF81-A36D1B30ADD0}</Project>
+      <Name>PrismaWEB.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrismaWEB.Utils\PrismaWEB.Utils.csproj">
+      <Project>{FB0A912A-433C-4603-8151-F576A631D421}</Project>
+      <Name>PrismaWEB.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

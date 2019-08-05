@@ -1,0 +1,82 @@
+﻿@model IEnumerable<PrismaWEB.Utils.Querys.QueryReseult>
+
+@{
+    ViewBag.Title = "Relatório";
+}
+
+<a href="@Url.Action("Index")" class="ui grey button">Novo fechamento</a>
+<a href="#" class="ui blue button"><i class="fas fa-print"></i> Imprimir</a>
+<a href="#" class="ui blue button"><i class="fas fa-table"></i> Exportar para o excel</a>
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Usuario</th>
+                    <th>Tarefa</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+                @foreach (var atividade in Model)
+                {
+                    <tr>
+                        <td>@atividade["DataRealizada"]</td>
+                        <td>@atividade["NomePessoa"]</td>
+                        <td>@atividade["NomeTarefa"]</td>
+                        <td>@atividade["Valor"]</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+
+    setTimeout(somaValorTotal, 300)
+
+    function somaValorTotal() {
+
+        var dadosTabela = document.getElementById('data')
+
+        var total = SomaTotal(dadosTabela)
+        var trValorTotal = MontaTr(total)
+
+        dadosTabela.appendChild(trValorTotal)
+    }
+
+    function SomaTotal(dadosTabela) {
+
+        var dadosTabelaArray = Array.from(dadosTabela.children)
+
+        var valorTotal = 0
+        dadosTabelaArray.forEach(function (dado, i) {
+            
+            var valorComVirgula = dado.lastElementChild.innerText
+            valorTotal += parseFloat(valorComVirgula.replace(',', '.'))         
+        })
+
+        return 'R$ ' + valorTotal.toFixed(2).toString().replace('.', ',')
+    }
+
+    function MontaTr(total) {
+
+        var tr = document.createElement("tr")
+        tr.appendChild(document.createElement("td"))
+        tr.appendChild(document.createElement("td"))
+        tr.appendChild(document.createElement("td"))
+
+        var tdValorTotal = document.createElement("td")
+
+        var Valor = document.createTextNode(total)
+        tdValorTotal.appendChild(Valor)
+
+        tr.appendChild(tdValorTotal)
+
+        return tr
+    }
+</script>

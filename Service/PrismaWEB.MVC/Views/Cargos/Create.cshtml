@@ -1,0 +1,48 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.CargoViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-row col-12">
+        <div class="form-group col-12">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Salvar" class="ui violet button" />
+                <input id="SaveAndNew" type="submit" value="Salvar/Novo" class="ui blue button" />
+                <a href="@Url.Action("Index")" class="ui grey button">Cancelar</a>
+            </div>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <h4 class="ui dividing header" style="width: 100%">Dados</h4>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+            <a style="color:red">*</a>
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label" })
+            <a style="color:red">*</a>
+            <div class="ui-widget">
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>//da
+
+    <div class="form-group col-12">
+        <div class="col-md-offset-2">
+            <input type="submit" value="Salvar" class="ui violet button" />
+        </div>
+    </div>
+
+}
+
+

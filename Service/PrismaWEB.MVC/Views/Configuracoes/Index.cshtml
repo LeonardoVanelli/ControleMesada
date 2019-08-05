@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Configurações";
+}
+
+<div id="Configuracoes" class="row">
+    <div class="col-md-12">
+        @Html.ActionLink("Papéis", "Index", "SPapeis", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Permições", "Index", "SPapeisAcoes", null, new { @class = "btn btn-success" })
+    </div>
+
+    <div class="col-md-12">
+        @Html.ActionLink("Tipo de pessoas", "Index", "TipoPessoas", null, new { @class = "btn btn-dark" })
+        @Html.ActionLink("Usuarios", "Index", "Usuarios", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="col-md-12">
+        @Html.ActionLink("Regerar registro de paginas", "RegerarPaginas", "Configuracoes", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Menus", "Index", "SMenus", null, new { @class = "btn btn-secondary" })
+        @Html.ActionLink("Itens de Menu", "Index", "SitensMenus", null, new { @class = "btn btn-warning" })
+    </div>
+</div>
+
+<style>
+    #Configuracoes div {
+        margin-bottom: 10px;
+    }
+</style>

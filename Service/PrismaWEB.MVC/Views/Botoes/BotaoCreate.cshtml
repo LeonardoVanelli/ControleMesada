@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/_Empty.cshtml";
+}
+
+@if (ViewBag.Visivel)
+{
+    <div class="card-header">
+        <a href="@Url.Action("Create", ViewBag.NomeController, null)" class="ui violet button"><i class="fa fa-plus"></i> Novo</a>
+    </div>
+}

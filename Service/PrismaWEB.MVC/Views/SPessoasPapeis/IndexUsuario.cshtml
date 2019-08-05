@@ -1,0 +1,133 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.SPessoasPapeisViewModel>
+
+<div class="col-6" style="float:right">
+
+    <div class="card-header">
+        <a class="btn btn-info" id="exibeNovo" onclick="ExibeCriaNovo()"> Novo</a>
+        <a class="btn btn-info" id="salvarNovo" onclick="SalvarNovo(this)" style="display:none"> Salvar</a>
+        <a class="btn btn-info" id="CancelarNovo" onclick="CancelarNovo()" style="display:none"> Cancelar</a>
+
+    </div>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Papel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conceder)
+            </th>
+        </tr>
+        <tbody id="ItemAdd">
+            @foreach (var item in Model)
+            {
+                <tr id="@item.Id">
+                    <td>
+                        <a id="@item.Id" onclick="abrirModalDeletar(this)" data-toggle="tooltip" title="Deletar">
+                            <span style="margin-right:0px;" class="red">
+                                <i class="fa fa-minus" aria-hidden="true" style="color:white"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Papel.Nome)
+                    </td>
+                    <td>
+                        <input type="checkbox" name="Conceder" id="Conceder" checked="@item.Conceder" onclick="AlteraConceder(this)" value="@item.Id" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tr id="criarNovo" style="display:none">
+            <td></td>
+            <td>
+                @Html.DropDownList("Papel_Id", null, new { @class = "form-control" })
+            </td>
+            <td>
+                <input id="ConcederC" type="checkbox" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    function ExibeCriaNovo() {
+        $("#criarNovo").show()
+        $("#exibeNovo").hide()
+        $("#salvarNovo").show()
+        $("#CancelarNovo").show()
+    }
+
+    function SalvarNovo(data) {
+        $("#criarNovo").hide()
+        $("#exibeNovo").show()
+        $("#salvarNovo").hide()
+        $("#CancelarNovo").hide()
+
+        //Criar novo
+        var e = document.getElementById('Papel_Id');
+        if (e.options[e.selectedIndex] == undefined)
+            return;
+        var IdPapel = e.options[e.selectedIndex].value;
+        var NomeItem = e.options[e.selectedIndex].text;
+        e.options[e.selectedIndex].remove();
+        var conceder;
+        if ($('#ConcederC:checked').val() == 'on')
+            conceder = true;
+        else
+            conceder = false;
+
+        $.ajax({
+            url: "@Url.Action("AdicionarItem", "SPessoasPapeis")",
+            data: { idPapel: IdPapel, conceder: conceder },
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (data) {
+            $("#ItemAdd").append('<tr id="' + data.Id +'"><td><a id="' + data.Id + '" onclick="abrirModalDeletar(this)" data-toggle="tooltip" title="Deletar"><span style="margin-right:0px;" class="red"><i class="fa fa-minus" aria-hidden="true" style="color:white"></i></span></a></td><td><label>' + NomeItem + '</label></td><td><input type="checkbox" name="Conceder" id="Conceder" checked="' + data.Conceder + '" onclick="AlteraConceder(this)" value="' + data.Id + '" /></td></tr>')
+        });
+    }
+
+    function CancelarNovo() {
+        $("#exibeNovo").show()
+        $("#criarNovo").hide()
+        $("#salvarNovo").hide()
+        $("#CancelarNovo").hide()
+    }
+
+    function AlteraConceder(element) {
+
+        $.ajax({
+            url: "@Url.Action("AlteraItem", "SPessoasPapeis")",
+            data: { idItem: element.value, conceder: element.checked },
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (data) {
+
+        });
+    }
+
+    function abrirModalDeletar(data, nomeItem) {
+        $('#ModalDelete').data('iddado', data.id)
+        $('#ModalDelete').modal('show');
+        if (nomeItem == undefined)
+            $('#msgDeletar').text("Vece realmente deseja deletar este item?");
+        else
+            $('#msgDeletar').text("Vece realmente deseja deletar " + nomeItem + " item?");
+    }
+
+    function DeletarItem() {
+        var id = $('#ModalDelete').data('iddado');
+        $('#ModalDelete').modal('hide');
+
+        $.ajax({
+            url: "@Url.Action("RemoverItem", "SPessoasPapeis")",
+            data: { idItem: id },
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (data) {
+            $("#Papel_Id").append('<option value="' + data.Id + '">' + data.Nome + '</option>');
+            $("#" + id).remove();
+        });
+    }
+</script>
+

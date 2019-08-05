@@ -1,0 +1,101 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@model IEnumerable<#= "<" + ViewDataTypeName + ">" #>
+@using ProjetoModeloDDD.MVC.Html_Helpers
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<#
+} else {
+#>
+
+<#
+    PushIndent("    ");
+}
+#>
+<div class="card-header">
+    <a href="@Url.Action("Create")" class="ui violet button"><i class="fa fa-plus"></i> Novo</a>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Ações</th>
+<#
+IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+                    <th>
+                        @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+                    </th>
+<#
+    }
+}
+#>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:50px">
+                            @Html.Editar(item.Id, Url.Action("Edit", new { id = item.Id }))
+                            @Html.Deletar(item.Id, item.Nome)
+                        </td>
+<#
+foreach (PropertyMetadata property in properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+                        <td>
+                            <a href="@Url.Action("Details/"+item.Id)" class="removeLinkAzul">
+                                @Html.DisplayFor(modelItem => <#= "item." + GetValueExpression(property) #>)
+                            </a>
+                        </td>
+<#
+    }
+}
+
+#>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

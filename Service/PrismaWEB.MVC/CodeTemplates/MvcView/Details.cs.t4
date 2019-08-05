@@ -1,0 +1,93 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@model <#= ViewDataTypeName #>
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+</head>
+<body>
+<#
+    PushIndent("    ");
+}
+#>
+<div class="form-row col-12">
+    <div class="form-group col-12">
+        <div class="col-md-offset-2">
+            <a href="@Url.Action("Edit", new { Id = Model.Id})" class="ui blue button">Editar</a>
+            <a href="@Url.Action("Index")" class="ui grey button">Cancelar</a>
+        </div>
+    </div>
+    <h4 class="ui dividing header" style="width: 100%">Dados</h4>
+<#
+foreach (PropertyMetadata property in ModelMetadata.Properties) {
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+    <div class="form-group col-md-6">
+        @Html.LabelFor(model => model.<#= GetValueExpression(property) #>, htmlAttributes: new { @class = "control-label" })
+        <div class="ui-widget">
+            @Html.EditorFor(model => model.<#= GetValueExpression(property) #>, new { htmlAttributes = new { @class = "form-control", @disabled = "disable" } })
+        </div>
+    </div>
+<#
+    }
+}
+#>
+</div>
+<div class="form-group col-12">
+    <div class="col-md-offset-2">
+        <a href="@Url.Action("Edit", new { Id = Model.Id})" class="ui blue button">Editar</a>
+        <a href="@Url.Action("Index")" class="ui grey button">Cancelar</a>
+    </div>
+</div>
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+</body>
+</html>
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>
