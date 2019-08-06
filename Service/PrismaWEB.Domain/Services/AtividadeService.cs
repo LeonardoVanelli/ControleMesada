@@ -27,7 +27,7 @@ namespace ProjetoModeloDDD.Domain.Services
         {
 
             ContemRegistroMesmaData(obj);
-            DataSucessorAoDiaAtual(obj);
+            //DataSucessorAoDiaAtual(obj);
             base.Add(obj);
         }
 
