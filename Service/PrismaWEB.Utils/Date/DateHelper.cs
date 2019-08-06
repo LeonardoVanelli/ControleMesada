@@ -43,7 +43,7 @@ namespace PrismaWEB.Utils.Date
             }
 
             DateTime firstDay = day.AddDays(-diasParaSubtrair);
-            DateTime lastDay = day.AddDays(diasParaSomar + 1);
+            DateTime lastDay = day.AddDays(diasParaSomar);
             return new FirstAndLastDay(firstDay, lastDay);
         }
     }
